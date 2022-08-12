@@ -16,7 +16,7 @@ function EventViewRow({ goToEvents }) {
     const user = useContext(userContext);
     const getData = require('../getData')
     useEffect(() => {
-        getData.default(`http://localhost:2000/apis/user/events/${user.username}`, setEvents);
+        getData.default(`/apis/user/events/${user.username}`, setEvents);
     }, []);
     return (
         <div className='py-2 pr-4 h-1/3'>

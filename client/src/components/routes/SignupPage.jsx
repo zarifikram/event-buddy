@@ -47,7 +47,7 @@ function SignupPage({ setCurrentUser }) {
   }
   const onSubmit = async () => {
 
-    await axios.post("http://localhost:2000/apis/user", eventBuddy).catch((e) => console.log(e))
+    await axios.post("/apis/user", eventBuddy).catch((e) => console.log(e))
     // Navigate("/eventUserProfile")
   }
   useEffect(() => {
@@ -58,7 +58,7 @@ function SignupPage({ setCurrentUser }) {
       // form.append('image', eventBuddy.photoobj)
       // console.log(form);
       // await axios.post(`https://api.imgbb.com/1/upload?key=f8dc2e55365fd6e12d7304b90d6f2671`, form).then((r) => console.log(r))
-      // axios.post("http://localhost:2000/apis/img/getlink", form).then((e)=>console.log(e)) 
+      // axios.post("/apis/img/getlink", form).then((e)=>console.log(e)) 
       console.log("ihihi" + eventBuddy.photo64)
       axios({
         method: 'post',

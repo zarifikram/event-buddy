@@ -11,10 +11,10 @@ function AddEventStep3(props) {
     const onSubmit = async () => {
         setRotate(true);
         if (newEvent.id != undefined) {
-            await axios.post(`http://localhost:2000/apis/manager/updateevent/${manager.username}`, newEvent).then(() => setStep(step + 1)).catch((e) => console.log(e))
+            await axios.post(`/apis/manager/updateevent/${manager.username}`, newEvent).then(() => setStep(step + 1)).catch((e) => console.log(e))
         }
         else {
-            await axios.post(`http://localhost:2000/apis/manager/addevent/${manager.username}`, newEvent).then(() => setStep(step + 1)).catch((e) => console.log(e))
+            await axios.post(`/apis/manager/addevent/${manager.username}`, newEvent).then(() => setStep(step + 1)).catch((e) => console.log(e))
         }
     }
     return (

@@ -19,7 +19,7 @@ function AdminEventPage() {
   const manager = useContext(userContext);
   const getData = require('../getData')
   const refresh = () => {
-    getData.default(`http://localhost:2000/apis/manager/events/${manager.username}`, setEvents)
+    getData.default(`/apis/manager/events/${manager.username}`, setEvents)
   }
 
   

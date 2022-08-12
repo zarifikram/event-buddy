@@ -9,7 +9,7 @@ function Requests() {
     const user = useContext(userContext);
 
     useEffect(() => {
-        getData(`http://localhost:2000/apis/user/messageRequests/${user.username}`, setSuggestions);
+        getData(`/apis/user/messageRequests/${user.username}`, setSuggestions);
     }, []);
 
     return (

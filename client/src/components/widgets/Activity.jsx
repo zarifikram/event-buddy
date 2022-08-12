@@ -9,7 +9,7 @@ function Activity() {
     const [activities, setActivites] = useState([]);
     const user = useContext(userContext);
     useEffect(() => {
-        getData(`http://localhost:2000/apis/user/activities/${user.username}`, setActivites);
+        getData(`/apis/user/activities/${user.username}`, setActivites);
     }, []);
 
     return (

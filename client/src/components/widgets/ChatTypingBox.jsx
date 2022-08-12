@@ -13,7 +13,7 @@ function ChatTypingBox(props) {
     const onMessageType = (e) => setMessage(e.target.value);
     
     const onMessageSend = (message, from, to) => {
-        axios.post('http://localhost:2000/apis/user/newmessage', { message: message, from: from, to: to }).then((e) => refreshMessages(selectedIndex))
+        axios.post('/apis/user/newmessage', { message: message, from: from, to: to }).then((e) => refreshMessages(selectedIndex))
     }
     return (
         <div className='flex items-center justify-between bg-yellow-50 w-full rounded-2xl px-4 py-2'>

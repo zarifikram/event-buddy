@@ -9,8 +9,8 @@ function EventOffers({goToEvents}) {
     const [bigBanners, setBigBanners] = useState([]);
     const getData = require('../getData')
     useEffect(() => {
-        getData.default(`http://localhost:2000/apis/user/getbigbanner`, setBigBanners)
-        getData.default(`http://localhost:2000/apis/user/getsmallbanner`, setSmallBanners)
+        getData.default(`/apis/user/getbigbanner`, setBigBanners)
+        getData.default(`/apis/user/getsmallbanner`, setSmallBanners)
     }, []);
 
     return (

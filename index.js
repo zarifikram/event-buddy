@@ -1,20 +1,24 @@
 const express = require('express')
 const morgan = require('morgan')
-const data = require('./assets/assets/events.json')
 const cors = require('cors')
 const socketIo = require('socket.io')
 const http = require('http')
+const path = require('path')
 // const router = require('express-promise-router')()
 // const oracledb = require('oracledb')
 const app = express()
 const server = http.createServer(app)
-const port = 2000
+const port = process.env.PORT || 2000;
 
 const io = socketIo(server,{ 
   cors: {
     origin: 'http://localhost:3000'
   }
 }) 
+
+if (process.env.NODE_ENV === 'production'){
+  app.use(express.static(path.join(__dirname, "client/build")))
+}
 
 io.on('connection',(socket)=>{
   console.log('client connected: ',socket.id)

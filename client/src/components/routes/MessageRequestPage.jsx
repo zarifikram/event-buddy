@@ -14,7 +14,7 @@ function MessageRequestPage() {
   const user = useContext(userContext);
 
   const getData = require('../getData')
-  useEffect(() => { getData.default(`http://localhost:2000/apis/user/messageRequests/${user.username}`, setRecepients) }, []);
+  useEffect(() => { getData.default(`/apis/user/messageRequests/${user.username}`, setRecepients) }, []);
 
   return (recepients.length === 0 ? <div className='text-3xl flex justify-center items-center h-full'> There are no message request at the moment. </div>  :
     <div className='flex w-full justify-between h-screen'>

@@ -17,7 +17,7 @@ function EventView2(props) {
     const onGenderPrefChange = (e) => setPref({ ...pref, gender: e.target.value });
     const user = useContext(userContext);
     const onSubmit = () => {
-        axios.post(`http://localhost:2000/apis/user/events/interest/${user.username}/${event.id}`, pref).catch((e) => console.log(e));
+        axios.post(`/apis/user/events/interest/${user.username}/${event.id}`, pref).catch((e) => console.log(e));
         next();
     }
 

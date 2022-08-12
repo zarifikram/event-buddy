@@ -10,7 +10,7 @@ function SigninPage({ setCurrentUser }) {
   const Navigate = useNavigate();
 
   const onSubmit = async () => {
-    axios.get(`http://localhost:2000/apis/userauth/${signin.email}/${signin.password}`).then((res) => {
+    axios.get(`/apis/userauth/${signin.email}/${signin.password}`).then((res) => {
       if (res.data === "WRONG") return
       else {
         setCurrentUser(res.data)

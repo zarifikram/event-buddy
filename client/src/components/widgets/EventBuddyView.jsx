@@ -19,8 +19,8 @@ function EventBuddyView(props) {
     const user = useContext(userContext);
     const next = () => setSelectedIndex(selectedIndex < eventBuddies.length - 1 ? selectedIndex + 1 : selectedIndex)
     const prev = () => setSelectedIndex(selectedIndex > 0 ? selectedIndex - 1 : selectedIndex)
-    const requestChat = (to) => axios.get(`http://localhost:2000/apis/user/request/${user.username}/${to}/${event.id}`)
-    useEffect(() => { getData(`http://localhost:2000/apis/user/matches/${user.username}/${event.id}`, setEventBuddies) }, []);
+    const requestChat = (to) => axios.get(`/apis/user/request/${user.username}/${to}/${event.id}`)
+    useEffect(() => { getData(`/apis/user/matches/${user.username}/${event.id}`, setEventBuddies) }, []);
     const start = (new Date(event.start_date.slice(0, 19)))
     const end = (new Date(event.end_date.slice(0, 19)))
 

@@ -21,12 +21,12 @@ function AdminSponsorPage() {
   const managerID = useContext(userContext);
   const getData = require('../getData')
   useEffect(() => {
-    getData.default(`http://localhost:2000/apis/manager/events/${managerID.username}`, setEvents)
-    getData.default(`http://localhost:2000/apis/manager/offers/${managerID.username}`, setSponsors)
+    getData.default(`/apis/manager/events/${managerID.username}`, setEvents)
+    getData.default(`/apis/manager/offers/${managerID.username}`, setSponsors)
   }, []);
 
   const onSubmit = async () => {
-    await axios.post(`http://localhost:2000/apis/manager/addoffer/${managerID.username}`, newSponsor).then(() => setStep(step + 1)).catch((e) => console.log(e))
+    await axios.post(`/apis/manager/addoffer/${managerID.username}`, newSponsor).then(() => setStep(step + 1)).catch((e) => console.log(e))
   }
 
   const resetModal = () => {

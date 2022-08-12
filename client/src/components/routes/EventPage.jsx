@@ -16,7 +16,7 @@ function EventPage({ eventid }) {
     const prev = () => setStep(step - 1);
     const user = useContext(userContext);
     const getData = require('../getData')
-    useEffect(() => { getData.default(`http://localhost:2000/apis/user/events/${user.username}`, setEvents) }, []);
+    useEffect(() => { getData.default(`/apis/user/events/${user.username}`, setEvents) }, []);
 
     useEffect(() => {
         const a = events.filter((d) => d.id === eventid);

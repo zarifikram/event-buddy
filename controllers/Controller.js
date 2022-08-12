@@ -1,8 +1,4 @@
-const events = require('../assets/assets/events.json')
-const messageRecepients = require('../assets/assets/messageRecepiens.json')
-const banners = require('../assets/assets/banners.json')
-const logistics = require('../assets/assets/logistics.json')
-const promos = []
+
 const pool = require('../queries')
 const io = require('../index')
 index = require('../index');

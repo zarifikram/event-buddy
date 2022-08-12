@@ -17,7 +17,7 @@ function AdminLogisticsPage() {
   const managerID = useContext(userContext)
   const getData = require('../getData')
   const onSubmit = async () => {
-    await axios.post(`http://localhost:2000/apis/manager/addLogistic/${managerID.username}`, newLogistic).then(() => setStep(step + 1)).catch((e) => console.log(e))
+    await axios.post(`/apis/manager/addLogistic/${managerID.username}`, newLogistic).then(() => setStep(step + 1)).catch((e) => console.log(e))
   }
   const resetModal = () => {
     setNewLogistic({type:"", eventid:""});
@@ -25,7 +25,7 @@ function AdminLogisticsPage() {
     // refresh();
     setShowModal(false);
   }
-  useEffect(() => { getData.default(`http://localhost:2000/apis/manager/logistics/${managerID.username}`, setLogistics) }, []);
+  useEffect(() => { getData.default(`/apis/manager/logistics/${managerID.username}`, setLogistics) }, []);
 
   const getIcons = (log) => {
     switch (log) {
@@ -131,7 +131,7 @@ const AddLogisticsStep2 = ({ step, setStep, newLogistic, setNewLogistic, onSubmi
 
 const AddLogisticsStep3 = ({ step, setStep, newLogistic, setNewLogistic, onSubmit, getData, managerID }) => {
   const [events, setEvents] = useState([])
-  useEffect(() => { getData.default(`http://localhost:2000/apis/manager/events/${managerID.username}`, setEvents) }, []);
+  useEffect(() => { getData.default(`/apis/manager/events/${managerID.username}`, setEvents) }, []);
   return (<div className='w-full h-full flex flex-col items-center justify-center basis-full gap-6'>
     <div className=' w-full overflow-scroll'>
       {events.map((eve, ind) => <Button onClick={()=>{setNewLogistic({...newLogistic, eventid:eve.id})}} className={`w-full mb-4 text-white rounded-3xl h-20 ${newLogistic.eventid===eve.id ? "bg-yellow-800":"bg-black"}`}>{eve.name}</Button>)}

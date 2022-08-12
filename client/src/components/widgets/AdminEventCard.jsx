@@ -10,7 +10,7 @@ function AdminEventCard(props) {
   const end = (new Date(event.end_date.slice(0, 19)))
   
   const deleteEvent = async () => {
-    await axios.get(`http://localhost:2000/apis/manager/deleteevent/${event.id}`).then(() => refresh()).catch((e) => console.log(e))
+    await axios.get(`/apis/manager/deleteevent/${event.id}`).then(() => refresh()).catch((e) => console.log(e))
   }
   return (
     <div className='w-full aspect-[4/1] rounded-3xl bg-yellow-100 p-6 flex'>

@@ -9,7 +9,7 @@ function Suggestions() {
     const getData = require('../getData')
     const user = useContext(userContext);
     useEffect(() => {
-        getData.default(`http://localhost:2000/apis/user/suggestions/${user.username}`, setSuggestions);
+        getData.default(`/apis/user/suggestions/${user.username}`, setSuggestions);
     }, []);
     return (
         <div className='flex flex-col rounded-3xl h-1/2 pb-1'>

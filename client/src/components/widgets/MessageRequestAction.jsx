@@ -22,7 +22,7 @@ function MessageRequestAction(props) {
     const valToDate = (val) => { const x = new Date(val); return x.toLocaleString(); }
     const onConfirm = () => {
         const body = {fromId:recepient.fromid, toId:recepient.toid, eventId:recepient.eventid, startTime:startTime}
-        axios.post('http://localhost:2000/apis/user/confirm', body).then((e)=>alert("Event Buddy Confirmed! Now you can chat with each other!"));
+        axios.post('/apis/user/confirm', body).then((e)=>alert("Event Buddy Confirmed! Now you can chat with each other!"));
         
     }
     return (

@@ -21,7 +21,7 @@ function MessagePage() {
   const user = useContext(userContext);
   const getData = require('../getData')
   useEffect(() => {
-    getData.default(`http://localhost:2000/apis/user/messageRecepients/${user.username}`, setRecepients);
+    getData.default(`/apis/user/messageRecepients/${user.username}`, setRecepients);
   }, []);
 
 

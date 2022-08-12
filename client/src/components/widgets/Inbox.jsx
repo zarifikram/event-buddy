@@ -12,12 +12,12 @@ function Inbox(props) {
   const refreshMessages = (value) => {
     if(recepient === null) return;
     console.log(value + " " + recepient.username);
-    getData(`http://localhost:2000/apis/user/messages/${user.username}/${recepient.username}`, setMessages);
+    getData(`/apis/user/messages/${user.username}/${recepient.username}`, setMessages);
   }
   
   useEffect(() => {
     refreshMessages(selectedIndex)
-    const socket = io('http://localhost:2000')
+    const socket = io('')
     
     socket.on('connect', () => console.log(socket.id))
     socket.on(user.username, () => refreshMessages(selectedIndex));

@@ -11,7 +11,7 @@ function EventSignupPage() {
     const [eventManager, setEventManager] = useState({ username: "", email: "", password: "" })
     const navigate = useNavigate();
     const onSubmit = async () => {
-        await axios.post("http://localhost:2000/apis/organizer", eventManager).catch((e) => console.log(e))
+        await axios.post("/apis/organizer", eventManager).catch((e) => console.log(e))
         // Navigate("/eventUserProfile")
       }
 

@@ -10,7 +10,7 @@ function EventSigninPage({ setCurrentUser }) {
     const Navigate = useNavigate();
 
     const onSubmit = async () => {
-        axios.get(`http://localhost:2000/apis/organizerauth/${signin.email}/${signin.password}`).then((res) => {
+        axios.get(`/apis/organizerauth/${signin.email}/${signin.password}`).then((res) => {
             if (res.data === "WRONG") { 
                 alert("hoiloo na ");
                 return;
