@@ -1,0 +1,35 @@
+const app = require('express')
+router = app.Router()
+
+controller = require('../controllers/Controller')
+
+router.post('/user', controller.setUser)
+router.post('/organizer', controller.setOrganizer)
+router.get('/userauth/:email/:password', controller.authUser)
+router.get('/organizerauth/:email/:password', controller.authOrganizer)
+router.get('/user/events/:id', controller.getEvents)
+router.post('/user/events/interest/:id/:eventId', controller.setInterest)
+router.get('/user/matches/:id/:eventId', controller.getMatches)
+router.get('/user/request/:fromId/:toId/:eventId', controller.setRequest)
+router.get('/user/messageRequests/:id', controller.getMessageRequests)
+router.get('/user/suggestions/:id', controller.getSuggestions)
+router.get('/user/activities/:id', controller.getActivites)
+router.get('/user/messageRecepients/:id', controller.getMessageRecepients)
+router.get('/user/messages/:user/:recepient', controller.getMessages)
+router.post('/user/newmessage', controller.pushMessage);
+router.post('/user/confirm', controller.setConfirmed);
+router.get('/user/banners', controller.getBanners)
+router.get('/', (res, req)=>req.send("hiiii"))
+router.get('/manager/events/:id', controller.getManagerEvents)
+router.post('/manager/addevent/:id', controller.addEvent)
+router.post('/manager/updateevent/:id', controller.updateEvent)
+router.get('/manager/deleteevent/:eventId', controller.deleteEvent)
+router.get('/manager/logistics/:id', controller.getManagerLogistics)
+router.post('/manager/addlogistic/:id', controller.addLogistic)
+router.get('/manager/offers/:id', controller.getManagerPromos)
+router.get('/user/getbigbanner/', controller.getBigBanner)
+router.get('/user/getsmallbanner/', controller.getSmallBanner)
+router.post('/manager/addoffer/:id', controller.addOffer)
+
+router.post('/img/getlink', controller.getLink)
+module.exports = router

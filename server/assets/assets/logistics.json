@@ -1,0 +1,31 @@
+[
+    {
+        "title": "Jamuna Future Park Hall",
+        "purpose": "Good place for approx. 2000 people. Well Air Conditioned and good parking place.",
+        "type": "Venue",
+        "cost": 120000,
+        "amount": 1
+    },
+    {
+        "title": "Akij Food and Bevarage",
+        "purpose": "Lunch pack consisting two snacks. Lunch contains biriyani and mojo. Snacks contains two chips packets, and soft drinks.",
+        "type": "Catering",
+        "cost": 100,
+        "amount": 1200
+    },
+    {
+        "title": "Master Electronics inc.",
+        "purpose": "Laptop supply for gaming. Sound and light for adornment.",
+        "type": "Presentation Technology",
+        "cost": 2000000,
+        "amount": 1
+    },
+    {
+        "title": "Notre Dame College Auditorium",
+        "purpose": "Good place for approx. 1200 people. Close to many school for greater engagement.",
+        "type": "Venue",
+        "cost": 86000,
+        "amount": 1
+    }
+    
+]
