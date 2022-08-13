@@ -197,7 +197,7 @@ const UserSignupStep3 = ({ prev, next, eventBuddy, setEventBuddy }) => <div clas
 const UserSignupStep4 = ({ prev, next, eventBuddy, setEventBuddy, afterFile }) => <div className='flex flex-col h-full justify-center px-12 w-full gap-10'>
   <h1 className='text-3xl font-extrabold w-full text-left'>Profile Photo</h1>
   <div className="w-60 h-60 rounded-full border border-black">
-    <img className="h-full object-cover rounded-full" src={eventBuddy.photo} alt="" />
+    <img className="h-full object-cover rounded-full" src={eventBuddy.photo_link} alt="" />
   </div>
   <div className="flex flex-col gap-4 w-2/3">
     <TextField
