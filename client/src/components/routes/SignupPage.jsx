@@ -47,8 +47,8 @@ function SignupPage({ setCurrentUser }) {
   }
   const onSubmit = async () => {
 
-    await axios.post("/apis/user", eventBuddy).catch((e) => console.log(e))
-    // Navigate("/eventUserProfile")
+    await axios.post("/apis/user", eventBuddy).then((e)=>Navigate("/userprofile")).catch((e) => console.log(e))
+
   }
   useEffect(() => {
     if (eventBuddy.photo !== undefined) {
