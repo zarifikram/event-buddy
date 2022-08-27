@@ -240,6 +240,7 @@ exports.updateEvent = (req, res) => {
 }
 exports.deleteEvent = (req, res) => {
     const eventId = req.params.eventId;
+    console.log(eventId);
     pool.query(`DELETE FROM EVENT WHERE id = '${eventId}'`, (e, results) => {
         if (e) {
             throw e;
@@ -326,4 +327,74 @@ exports.getLink = (req, res) => {
       console.log(options.apiKey)
     imgbbUploader(options)
         .then((response) => res.send(response))
+}
+
+exports.getMaxInterest = (req, res) => {
+    const managerId = req.params.id;
+    pool.query(`select name, countinterested(id) as count from event where countinterested(id) = any(select max(countinterested(id)) from event where organizer = $1) and organizer = $1`, [managerId], (e, results) => {
+        if (e) {
+            throw e;
+        }
+        res.send(results.rows)
+    })
+}
+exports.getMaxConfirm = (req, res) => {
+    const managerId = req.params.id;
+    pool.query(`select name, countconfirmed(id) as count from event where countconfirmed(id) = any(select max(countconfirmed(id)) from event where organizer = $1) and organizer = $1`, [managerId], (e, results) => {
+        if (e) {
+            throw e;
+        }
+        res.send(results.rows)
+    })
+}
+exports.getTotalInterest = (req, res) => {
+    const managerId = req.params.id;
+    pool.query(`select sum(countinterested(id)) as count from event where organizer = $1`, [managerId], (e, results) => {
+        if (e) {
+            throw e;
+        }
+        res.send(results.rows)
+    })
+}
+exports.getTotalConfirm = (req, res) => {
+    const managerId = req.params.id;
+    pool.query(`select sum(countconfirmed(id)) as count from event where organizer = $1`, [managerId], (e, results) => {
+        if (e) {
+            throw e;
+        }
+        res.send(results.rows)
+    })
+}
+exports.getMaxCost = (req, res) => {
+    const managerId = req.params.id;
+    pool.query(`select geteventname(eventid) as name, type, (price*amount) as count from logistic where price*amount = any(select max(price*amount) from logistic where eventid = any(select id from event where organizer = $1))`, [managerId], (e, results) => {
+        if (e) {
+            throw e;
+        }
+        res.send(results.rows)
+    })
+}
+exports.getEndingSoon = (req, res) => {
+    const managerId = req.params.id;
+    pool.query(`select type, geteventname(eventid) as name, promo_end_date - current_date as end_date from offer where (select promo_end_date) = any(select min(promo_end_date) from offer where eventid = any(select id from event where organizer = $1) and promo_end_date > current_date)`, [managerId], (e, results) => {
+        if (e) {
+            throw e;
+        }
+        res.send(results.rows)
+    })
+}
+
+exports.getTopEvent = (req, res) => {
+    console.log('hi');
+
+    pool.query(`SELECT * FROM EVENT WHERE ID = ANY(SELECT eventid FROM OFFER WHERE type = 'Event Top Result' AND PROMO_END_DATE > CURRENT_TIMESTAMP) order by random()`, [], (e, results) => {
+        if (e) {
+            throw e;
+        }
+        res.send('hi')
+    })
+}
+
+exports.getFun = (req, res) => {
+    res.send('hi')
 }

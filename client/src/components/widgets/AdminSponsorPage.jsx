@@ -62,7 +62,7 @@ function AdminSponsorPage() {
   return (
     <div className='h-screen w-full'>
       <div className="h-full w-full py-4 flex flex-col gap-4 pr-4">
-        <h1 className='text-left text-3xl font-bold'>Your Events</h1>
+        <h1 className='text-left text-3xl font-bold'>Promotions</h1>
         <div className="overflow-y-auto flex flex-col gap-4">
 
           {sponsors.map((sponsor, ind) => <AdminSponsorCard sponsor={sponsor} getIcons={getIcons} />)}

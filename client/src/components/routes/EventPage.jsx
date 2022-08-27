@@ -17,7 +17,9 @@ function EventPage({ eventid }) {
     const user = useContext(userContext);
     const getData = require('../getData')
     useEffect(() => { getData.default(`/apis/user/events/${user.username}`, setEvents) }, []);
-
+    const [topEvent, setTopEvent] = useState(null);
+    useEffect(() => { getData.default(`/apis/user/events/topevent`, setTopEvent) }, []);
+    
     useEffect(() => {
         const a = events.filter((d) => d.id === eventid);
         setSelectedEvent(a[0]);
@@ -35,11 +37,14 @@ function EventPage({ eventid }) {
     const [selectedEvent, setSelectedEvent] = useState(null);
 
     const onEventSelect = (event) => { setSelectedEvent(event); setStep(0); }
+    console.log('here')
+    console.log(topEvent)
     return (
         <div className='flex justify-between h-screen py-4 pr-4 gap-4'>
-            <div className='flex flex-col  rounded-3xl p-4  bg-yellow-100 '>
+            <div className='flex flex-col  rounded-3xl p-4  bg-yellow-100 w-full'>
                 <SearchBar setSearchQuery={setSearchQuery} />
-                {dataFiltered.length === 0 ? <CircularProgress /> : <div className="flex flex-wrap justify-center grow-1 overflow-auto">
+                {/* {topEvent != null ? <EventCard onClick={onEventSelect} event={topEvent} /> : <div/>} */}
+                {dataFiltered.length === 0 ? <div className='text-xl m-12'> Could not find any matching events. 😓</div> : <div className="flex flex-wrap justify-center grow-1 overflow-auto">
                     {dataFiltered.map((d) => <EventCard onClick={onEventSelect} event={d} />)}
                 </div>}
             </div>

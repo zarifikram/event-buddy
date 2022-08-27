@@ -49,7 +49,7 @@ function AdminLogisticsPage() {
   return (
     <div className='h-screen w-full'>
       <div className="h-full w-full py-4 flex flex-col gap-4 pr-4">
-        <h1 className='text-left text-3xl font-bold'>Your Events</h1>
+        <h1 className='text-left text-3xl font-bold'>Logistics</h1>
         <div className="overflow-y-auto flex flex-col gap-4">
 
           {logistics.map((log, ind) => <AdminLogisticsCard logistic={log} ind={ind} getIcons={getIcons} />)}
