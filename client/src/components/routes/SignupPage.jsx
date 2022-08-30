@@ -47,7 +47,7 @@ function SignupPage({ setCurrentUser }) {
   }
   const onSubmit = async () => {
 
-    await axios.post("/apis/user", eventBuddy).then((e)=>Navigate("/userProfile")).catch((e) => console.log(e))
+    await axios.post("/apis/user", eventBuddy).then((e)=>{setCurrentUser(eventBuddy); Navigate("/userProfile")}).catch((e) => console.log(e))
 
   }
   useEffect(() => {
