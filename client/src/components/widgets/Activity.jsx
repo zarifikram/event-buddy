@@ -14,7 +14,7 @@ function Activity() {
 
     return (
         <div className='pr-2 w-1/4'>
-            <div className="flex flex-col items-start p-4 bg-yellow-100 rounded-3xl h-full w-full">
+            <div className="flex flex-col items-start p-4 bg-yellow-100 rounded-3xl h-full w-full overflow-hidden">
                 <h1 className='font-bold text-gray-700 mb-4'>Activity</h1>
                 {activities.map((activity, ind) => <ActivityTile activity={activity} />)}
             </div>

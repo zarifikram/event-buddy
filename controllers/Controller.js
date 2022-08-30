@@ -9,7 +9,7 @@ var user = 0;
 
 exports.getEvents = (req, res) => {
     const user = req.params.id;
-    pool.query(`select *, isInterested('${user}', id) from event where end_date > current_date`, (e, results) => {
+    pool.query(`select *, isInterested('${user}', id) from event where end_date > current_date and not '${user}' = any(select username1 from confirmed where eventid = id) and not '${user}' = any(select username2 from confirmed where eventid = id) order by random()`, (e, results) => {
         if (e) {
             throw e;
         }
@@ -220,7 +220,7 @@ exports.addEvent = (req, res) => {
 }
 
 exports.getBigBanner = (req, res) => {
-    pool.query(`select * from offer where type = 'Big Banner' order by random() limit 1`, (e, results) => {
+    pool.query(`select * from offer where type = 'Big Banner' and promo_end_date >= current_date order by random() limit 1`, (e, results) => {
         if (e) {
             throw e;
         }
@@ -229,7 +229,7 @@ exports.getBigBanner = (req, res) => {
 }
 
 exports.getSmallBanner = (req, res) => {
-    pool.query(`select *, geteventname(eventid) from offer where type = 'Small Banner' order by random() limit 2`, (e, results) => {
+    pool.query(`select *, geteventname(eventid) from offer where type = 'Small Banner' and promo_end_date >= current_date order by random() limit 2`, (e, results) => {
         if (e) {
             throw e;
         }
