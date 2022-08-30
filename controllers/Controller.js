@@ -81,6 +81,17 @@ exports.setUser = (req, res) => {
         res.send(results.rows);
     })
 }
+exports.editUser = (req, res) => {
+    const eb = req.body;
+    const values= [eb.username, eb.first_name, eb.last_name, eb.photo_link, eb.address, eb.occupation]
+    console.log(values);
+    pool.query(`UPDATE EVENTBUDDY SET FIRST_NAME = $2, LAST_NAME = $3, PHOTO_LINK = $4, ADDRESS = $5, OCCUPATION = $6 WHERE USERNAME = $1`, values, (e, results) => {
+        if (e) {
+            throw e;
+        }
+        res.send(results.rows);
+    })
+}
 exports.setOrganizer = (req, res) => {
     console.log(req.body)
     const org = req.body;
@@ -391,10 +402,22 @@ exports.getTopEvent = (req, res) => {
         if (e) {
             throw e;
         }
-        res.send('hi')
+        res.send(results.rows)
     })
 }
 
 exports.getFun = (req, res) => {
     res.send('hi')
+}
+
+exports.getEventBuddy = (req, res) => {
+    const username = req.params.id;
+    console.log(username)
+    pool.query(`SELECT * FROM EVENTBUDDY WHERE username like $1`, [username], (e, results) => {
+        if (e) {
+            throw e;
+        }
+        if (results.rowCount === 0) res.send("WRONG")
+        else res.send(results.rows[0]);
+    })
 }
