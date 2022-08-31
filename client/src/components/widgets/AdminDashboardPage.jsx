@@ -48,7 +48,7 @@ const HighestConfirmed = () => {
   const [data, setData] = useState([])
   const user = useContext(userContext);
 
-  useEffect(() => { getData(`/apis/manager/maxconfirmed/${user.username}`, setData) }, []);
+  useEffect(() => { getData(`/apis/manager/maxconfirm/${user.username}`, setData) }, []);
 
   return (data.length === 0) ? <div className="bg-yellow-100 h-full w-2/3 rounded-3xl p-4 flex h-full">Data not found.</div> : <div className="bg-yellow-100 h-full w-2/3 rounded-3xl p-4 flex h-full">
     <div className="flex flex-col items-start w-1/2 gap-4">
